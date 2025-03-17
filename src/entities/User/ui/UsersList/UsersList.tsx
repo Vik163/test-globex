@@ -1,7 +1,5 @@
 import { memo } from 'react';
 
-import { Text } from '@/shared/ui/Text';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './UsersList.module.scss';
 import { HStack } from '@/shared/ui/Stack';
 import type { User } from '../../model/types/user';
@@ -10,16 +8,14 @@ import { UsersListItem } from '../UsersListItem/ui/UsersListItem/UsersListItem';
 
 interface UsersListProps {
    className?: string;
-   users: User[];
+   users?: User[];
    isLoading?: boolean;
 }
 
 const getSkeletons = () =>
-   new Array(6)
+   new Array(9)
       .fill(0)
-      .map((item, index) => (
-         <UsersListItemSkeleton className={cls.card} key={index} />
-      ));
+      .map((item, index) => <UsersListItemSkeleton key={index} />);
 
 // карточки или скелетоны
 export const UsersList = memo((props: UsersListProps) => {
@@ -27,10 +23,16 @@ export const UsersList = memo((props: UsersListProps) => {
 
    return (
       <HStack className={cls.UsersList} wrap="wrap" gap="24">
-         {users.map((item) => (
-            <UsersListItem user={item} key={item.name} className={cls.card} />
-         ))}
          {isLoading && getSkeletons()}
+
+         {users &&
+            users.map((item) => (
+               <UsersListItem
+                  user={item}
+                  key={item.name}
+                  className={cls.card}
+               />
+            ))}
       </HStack>
    );
 });

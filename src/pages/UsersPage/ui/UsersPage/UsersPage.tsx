@@ -17,14 +17,15 @@ export const UsersPage = (props: UsersPageProps) => {
    const { className, setError } = props;
    const [users, setUsers] = useState<User[] | undefined>();
    const [inputText, setInputText] = useState('');
+   const [isLoading, setIsLoading] = useState(false);
    const inputRef = useRef<HTMLInputElement>(null);
 
    // первоначальный запрос
    useEffect(() => {
-      if (!users) fetchUsers().then((data) => getData(data));
+      if (!users) sendRequest();
    }, [users]);
 
-   function getData(data: User[] | string) {
+   function handleData(data: User[] | string) {
       if (typeof data === 'string') {
          setError(data);
       } else {
@@ -32,15 +33,19 @@ export const UsersPage = (props: UsersPageProps) => {
       }
    }
 
-   function sendRequest() {
-      fetchUsers(inputText).then((data) => getData(data));
+   function sendRequest(data?: string) {
+      setIsLoading(true);
+
+      fetchUsers(inputText || data)
+         .then((data) => handleData(data))
+         .finally(() => setIsLoading(false));
    }
 
    // клавиша "Enter" подтверждение поиска ================
    function onEnterKeyRequest(e: KeyboardEvent) {
       const value = inputRef?.current?.value;
       if (e.code === 'Enter' && value) {
-         fetchUsers(value).then((data) => getData(data));
+         sendRequest(value);
       }
    }
 
@@ -60,12 +65,11 @@ export const UsersPage = (props: UsersPageProps) => {
                refProps={inputRef}
                onChange={(value) => setInputText(value)}
                className={cls.input}
-               onKeyDown={() => onEnterKeyRequest}
             />
             <Icon clickable onClick={sendRequest} Svg={lens} />
          </HStack>
 
-         {users && <UsersList users={users} />}
+         <UsersList isLoading={isLoading} users={users} />
       </Page>
    );
 };

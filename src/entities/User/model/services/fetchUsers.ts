@@ -3,7 +3,7 @@ import { $api } from '@/shared/api/api';
 
 export const fetchUsers = async (term?: string) => {
    try {
-      const response = await $api.get<User[]>('/f', {
+      const response = await $api.get<User[]>('/', {
          params: { term },
       });
 

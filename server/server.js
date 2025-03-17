@@ -10,17 +10,19 @@ fastify.get('/', async (request, reply) => {
          return;
       }
 
-      if (request.query.term) {
-         const result = JSON.parse(data).filter(
-            (elem) =>
-               elem.name
-                  .toLowerCase()
-                  .search(request.query.term.toLowerCase()) !== -1,
-         );
-         reply.send(JSON.stringify(result));
-      } else {
-         reply.send(data);
-      }
+      setTimeout(() => {
+         if (request.query.term) {
+            const result = JSON.parse(data).filter(
+               (elem) =>
+                  elem.name
+                     .toLowerCase()
+                     .search(request.query.term.toLowerCase()) !== -1,
+            );
+            reply.send(JSON.stringify(result));
+         } else {
+            reply.send(data);
+         }
+      }, 800);
    });
 });
 

@@ -1,4 +1,5 @@
-.UsersListItem {
+.UsersListItem,
+.cardSkeleton {
    padding: 24px;
    cursor: pointer;
    height: 314px;
@@ -8,12 +9,8 @@
 }
 
 .cardSkeleton {
-   padding: 15px;
-}
-
-.infoSceleton {
-   margin-top: 10px;
-   height: 165px;
+   border-radius: 16px;
+   padding-top: 30px;
 }
 
 .title {
