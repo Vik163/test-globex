@@ -6,6 +6,14 @@
 - Axios
 - Webpack
 - добавил обработку ошибки загрузки, скелетоны и setTimeout на сервере (иммитация загрузки)
+- скрипты
+
+   ```javascript
+      "start": "webpack serve --env port=3000",
+      "dev": "concurrently \"npm start\" \"npm run dev:server\"",
+      "dev:server": "node ./server --watch server.js",
+      "build": "webpack  --env mode=production",
+   ```
 
    ***
 
