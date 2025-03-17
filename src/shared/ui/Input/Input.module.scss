@@ -1,0 +1,42 @@
+.InputWrapper {
+   display: flex;
+   align-items: center;
+   padding: 8px 16px;
+   width: 100%;
+}
+
+.addonLeft,
+.addonRight {
+   display: flex;
+}
+
+.withAddonLeft {
+   padding-left: 8px;
+}
+
+.withAddonRight {
+   padding-right: 8px;
+}
+
+.focused {
+   .addonLeft svg,
+   .addonRight svg {
+      color: var(--accent-redesigned);
+   }
+}
+
+.input {
+   border: none;
+   outline: none;
+   width: 100%;
+   color: var(--text-redesigned);
+   background: none;
+
+   &::placeholder {
+      color: var(--placeholder-color);
+   }
+}
+
+.readonly {
+   opacity: 0.7;
+}

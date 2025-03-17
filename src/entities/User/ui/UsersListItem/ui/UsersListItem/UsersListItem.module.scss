@@ -1,0 +1,50 @@
+.UsersListItem {
+   padding: 24px;
+   cursor: pointer;
+   height: 314px;
+   width: 357px;
+   box-shadow: 0 0 20px var(--shadow-color);
+   overflow: hidden;
+}
+
+.cardSkeleton {
+   padding: 15px;
+}
+
+.infoSceleton {
+   margin-top: 10px;
+   height: 165px;
+}
+
+.title {
+   margin-top: 5px;
+   line-height: 30px;
+   height: 50px;
+   width: 240px;
+   color: var(--primary-color);
+   margin-bottom: 24px;
+}
+
+.phone,
+.email {
+   display: flex;
+   align-items: center;
+   gap: 14px;
+   height: 24px;
+   margin-bottom: 12px;
+
+   svg {
+      color: var(--icon-color);
+      width: 24px;
+      height: 24px;
+   }
+}
+
+.closeIcon {
+   position: absolute;
+   top: 29px;
+   right: 25px;
+   width: 20px;
+   height: 20px;
+   color: var(--primary-color);
+}

@@ -1,0 +1,35 @@
+.container {
+   width: 500px;
+   color: var(--primary-color);
+}
+.title {
+   line-height: 30px;
+   max-width: 400px;
+}
+
+.infoContainer {
+   width: 452px;
+   gap: 14px;
+}
+
+.infoBlock {
+   width: 100%;
+   line-height: 24px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
+.info {
+   width: 275px;
+   color: var(--text-modal-color);
+   font-size: 16px;
+}
+
+.addInfoContainer {
+   gap: 12px;
+}
+
+.description {
+   color: var(--text-modal-color);
+}
